@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Tickets - Support HUB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <i class="fa-solid fa-server logo-icon"></i>
+                <h2>Support<span>HUB</span></h2>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+                <li class="active"><a href="tickets.html"><i class="fa-solid fa-ticket"></i> Mis Tickets</a></li>
+                <li><a href="nuevo_ticket.html"><i class="fa-solid fa-plus-circle"></i> Nuevo Ticket</a></li>
+                <li><a href="base_conocimiento.html"><i class="fa-solid fa-folder-open"></i> Base de Conocimiento</a>
+                </li>
+                <li><a href="estadisticas.html"><i class="fa-solid fa-chart-line"></i> Estadísticas</a></li>
+                <li class="spacer"></li>
+                <li><a href="configuracion.html"><i class="fa-solid fa-gear"></i> Configuración</a></li>
+                <li><a href="index.html" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar
+                        Sesión</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Buscar incidencias, usuarios o equipos...">
+                </div>
+                <div class="user-profile">
+                    <button class="notif-btn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <div class="profile-info">
+                        <span class="user-name">Arturo López</span>
+                        <span class="user-role">Técnico Support HUB</span>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=Arturo+Lopez&background=0D8ABC&color=fff&rounded=true&bold=true"
+                        alt="User Profile" class="avatar">
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="content-wrapper">
+                <div class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1>Tus Tickets de Incidencia</h1>
+                        <p>Gestiona, filtra y actualiza los tickets asignados a ti</p>
+                    </div>
+                    <a href="nuevo_ticket.html" class="btn-primary"><i class="fa-solid fa-plus"></i> Crear Nuevo</a>
+                </div>
+
+                <!-- Filtros -->
+                <div class="glass-panel" style="margin-bottom: 24px; padding: 16px 24px;">
+                    <div style="display: flex; gap: 15px; align-items: center;">
+                        <span style="font-weight: 500; color: var(--text-secondary);">Filtrar por:</span>
+                        <select id="filterStatus" onchange="applyFilters()" class="custom-select"
+                            style="background-color: rgba(15, 23, 42, 0.5); color: var(--text-primary); border: 1px solid var(--border-color); padding: 8px 12px; border-radius: var(--border-radius-sm);">
+                            <option value="todos">Todos los Estados</option>
+                            <option value="abierto">Abiertos</option>
+                            <option value="progreso">En Progreso</option>
+                            <option value="resuelto">Resueltos</option>
+                        </select>
+                        <select id="filterPriority" onchange="applyFilters()" class="custom-select"
+                            style="background-color: rgba(15, 23, 42, 0.5); color: var(--text-primary); border: 1px solid var(--border-color); padding: 8px 12px; border-radius: var(--border-radius-sm);">
+                            <option value="todos">Cualquier Prioridad</option>
+                            <option value="critica">Crítica</option>
+                            <option value="alta">Alta</option>
+                            <option value="media">Media</option>
+                            <option value="baja">Baja</option>
+                        </select>
+                    </div>
+                </div>
+
+                <section class="glass-panel">
+                    <div
+                        style="padding: 24px 24px 10px 24px; margin-bottom: 5px; display: flex; gap: 10px; overflow-x: auto;">
+                        <button class="btn-filter active" onclick="filterTicketsBy('Todos', this)">Todos los
+                            Tickets</button>
+                        <button class="btn-filter" onclick="filterTicketsBy('Abiertos', this)">Abiertos / En
+                            Curso</button>
+                        <button class="btn-filter" onclick="filterTicketsBy('Resueltos', this)">Resueltos /
+                            Cerrados</button>
+                    </div>
+                    <div class="table-container" id="fullTicketsBody" data-full-view="true">
+                        <table class="tickets-table">
+                            <thead>
+                                <tr>
+                                    <th>ID / Usuario</th>
+                                    <th>Asunto</th>
+                                    <th>Categoría</th>
+                                    <th>Estado</th>
+                                    <th>Prioridad</th>
+                                    <th>Fecha Creación</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="db.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            applyCrisisMode();
+            const container = document.getElementById('fullTicketsBody');
+            if (container) {
+                const role = sessionStorage.getItem('sh_role');
+                renderTickets('fullTicketsBody', role === 'admin');
+            }
+        });
+    </script>
+</body>
+
+</html>

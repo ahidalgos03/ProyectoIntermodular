@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Support HUB</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Propio -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="website icon" type="ico" href="favicon.ico">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <i class="fa-solid fa-server logo-icon"></i>
+                <h2>Support<span>HUB</span></h2>
+            </div>
+
+            <ul class="nav-links">
+                <li class="active"><a href="admin.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+                <li><a href="tickets.html"><i class="fa-solid fa-ticket"></i> Todos los Tickets</a></li>
+                <li><a href="base_conocimiento.html"><i class="fa-solid fa-folder-open"></i> Base de Conocimiento</a>
+                </li>
+                <li><a href="estadisticas.html"><i class="fa-solid fa-chart-line"></i> Estadísticas</a></li>
+                <li class="spacer"></li>
+                <li><a href="configuracion.html"><i class="fa-solid fa-gear"></i> Configuración</a></li>
+                <li><a href="index.html" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar
+                        Sesión</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content area -->
+        <main class="main-content">
+
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Buscar incidencias, usuarios o equipos...">
+                </div>
+
+                <div class="user-profile">
+                    <button class="notif-btn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <div class="profile-info">
+                        <span class="user-name" id="displayUsername">Admin</span>
+                        <span class="user-role">Administrador del Sistema</span>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=0D8ABC&color=fff&rounded=true&bold=true"
+                        alt="User Profile" class="avatar">
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="content-wrapper">
+
+                <div class="page-header">
+                    <h1>Centro de Soporte Técnico (Admin)</h1>
+                    <p>Gestión global de incidencias y peticiones de servicio</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon open">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3 id="stat-open">14</h3>
+                            <p>Tickets Abiertos Totales</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon progress">
+                            <i class="fa-solid fa-spinner"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3 id="stat-progress">8</h3>
+                            <p>En Progreso</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon solved">
+                            <i class="fa-solid fa-check-double"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3 id="stat-solved">124</h3>
+                            <p>Resueltos (Mes)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crisis Panic Button (Admin) -->
+                <div id="crisis-panic-section" style="display:none; margin-bottom: 32px;">
+                    <section class="glass-panel" style="padding: 24px;">
+                        <button type="button" id="crisis-panic-btn" class="crisis-panic-btn"
+                            onclick="showCrisisConfirm()">
+                            <span class="crisis-panic-icon">🚨</span>
+                            <div>
+                                <div class="crisis-btn-label">Activar Modo Crisis Global</div>
+                                <div class="crisis-btn-sub"
+                                    style="font-size:0.8rem; font-weight:400; opacity:0.7; margin-top:2px;">Informa
+                                    instantáneamente a todos los usuarios de una caída crítica de servicios</div>
+                            </div>
+                        </button>
+                    </section>
+                </div>
+
+                <div class="main-grid" style="grid-template-columns: 1fr;">
+
+
+
+                    <!-- Tabla de Tickets Recientes -->
+                    <section class="glass-panel recent-tickets-section">
+                        <div class="panel-header">
+                            <h2><i class="fa-solid fa-list-ul"></i> Actividad Reciente Global</h2>
+                            <button class="btn-icon"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                        </div>
+
+                        <div class="table-container" id="adminTicketsBody" data-full-view="false">
+                            <table class="tickets-table">
+                                <thead>
+                                    <tr>
+                                        <th>Usuario</th>
+                                        <th>Asunto</th>
+                                        <th>Estado</th>
+                                        <th>Prioridad</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel-footer">
+                            <a href="tickets.html" class="view-all">Ver todos los tickets <i
+                                    class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="db.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            applyCrisisMode();
+            const role = sessionStorage.getItem('sh_role');
+            if (role !== 'admin') {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // Setup Panic Button
+            document.getElementById('crisis-panic-section').style.display = 'block';
+            if (isCrisisActive()) {
+                const btn = document.getElementById('crisis-panic-btn');
+                btn.classList.add('active-crisis');
+                btn.querySelector('.crisis-btn-label').textContent = '✅ Desactivar Modo Crisis';
+                btn.querySelector('.crisis-btn-sub').textContent = 'Clic aquí para cancelar la alerta global';
+            }
+
+            renderTickets('adminTicketsBody', true, 5);
+        });
+
+        // Crisis Confirm Dialog
+        window.showCrisisConfirm = function () {
+            if (isCrisisActive()) {
+                toggleCrisisMode();
+                location.reload();
+                return;
+            }
+            const overlay = document.createElement('div');
+            overlay.className = 'ticket-modal-overlay';
+            overlay.style.zIndex = '10000';
+            overlay.innerHTML = `
+                <div class="ticket-modal glass-panel" style="max-width:480px; text-align:center; padding:40px 30px;">
+                    <div style="font-size:3.5rem; margin-bottom:15px;">🚨</div>
+                    <h3 style="color:#ef4444; margin-bottom:12px; font-size:1.5rem;">Activar Modo Crisis Global</h3>
+                    <p style="color:var(--text-secondary); margin-bottom:20px;">Describe brevemente la anomalía detectada. Esto aparecerá en el banner de todos los usuarios:</p>
+                    <textarea id="crisis-desc-input" placeholder="Ej: Fallo masivo en el servidor de archivos. Tiempo estimado de reparación: 2 horas."
+                        style="width:100%; padding:12px; border-radius:8px; border:1px solid rgba(239,68,68,0.4); background:rgba(239,68,68,0.05); color:white; font-family:inherit; resize:none; margin-bottom:20px;"
+                        rows="3"></textarea>
+                    <div style="display:flex; gap:12px; justify-content:center;">
+                        <button class="btn-secondary" onclick="this.closest('.ticket-modal-overlay').remove()">Cancelar</button>
+                        <button style="background:#ef4444; color:white; border:none; padding:10px 24px; border-radius:6px; font-weight:600; font-family:inherit; cursor:pointer;" onclick="confirmCrisis(this)">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Lanzar Alerta
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+        };
+
+        window.confirmCrisis = function (btn) {
+            const desc = document.getElementById('crisis-desc-input')?.value.trim() || 'Incidencia crítica detectada. Técnicos trabajando en ello.';
+            btn.closest('.ticket-modal-overlay').remove();
+            toggleCrisisMode(desc);
+            location.reload();
+        };
+
+        const form = document.getElementById('adminQuickForm');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const asunto = document.getElementById('asunto').value;
+                const categoria = document.getElementById('categoria')?.value || 'general';
+                const prioridad = document.getElementById('prioridad')?.value || 'media';
+                const descripcion = document.getElementById('descripcion')?.value || '';
+
+                saveTicket(asunto, categoria, prioridad, descripcion);
+                showNotification('El ticket rápido ha sido registrado.', () => {
+                    renderTickets('adminTicketsBody', true, 5);
+                    form.reset();
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
