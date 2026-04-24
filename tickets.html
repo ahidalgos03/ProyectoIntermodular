@@ -14,15 +14,15 @@
 </head>
 
 <body>
-    <div class="dashboard-container">
+    <div class="contenedor-principal">
         <!-- Sidebar Navigation -->
-        <nav class="sidebar">
-            <div class="sidebar-header">
+        <nav class="menu-lateral">
+            <div class="cabecera-menu">
                 <i class="fa-solid fa-server logo-icon"></i>
                 <h2>Support<span>HUB</span></h2>
             </div>
 
-            <ul class="nav-links">
+            <ul class="enlaces-navegacion">
                 <li><a href="index.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
                 <li class="active"><a href="tickets.html"><i class="fa-solid fa-ticket"></i> Mis Tickets</a></li>
                 <li><a href="nuevo_ticket.html"><i class="fa-solid fa-plus-circle"></i> Nuevo Ticket</a></li>
@@ -36,19 +36,19 @@
             </ul>
         </nav>
 
-        <main class="main-content">
+        <main class="area-principal">
             <!-- Topbar -->
-            <header class="topbar">
-                <div class="search-bar">
+            <header class="barra-superior">
+                <div class="barra-busqueda">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" placeholder="Buscar incidencias, usuarios o equipos...">
                 </div>
-                <div class="user-profile">
-                    <button class="notif-btn">
+                <div class="user-dropdown">
+                    <button class="btn-notifications">
                         <i class="fa-regular fa-bell"></i>
                         <span class="badge">3</span>
                     </button>
-                    <div class="profile-info">
+                    <div class="user-details">
                         <span class="user-name">Arturo López</span>
                         <span class="user-role">Técnico Support HUB</span>
                     </div>
@@ -58,17 +58,17 @@
             </header>
 
             <!-- Page Content -->
-            <div class="content-wrapper">
-                <div class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="contenido-pagina">
+                <div class="page-heading" style="display: flex; justify-content: space-between; align-items: center;">
                     <div>
                         <h1>Tus Tickets de Incidencia</h1>
                         <p>Gestiona, filtra y actualiza los tickets asignados a ti</p>
                     </div>
-                    <a href="nuevo_ticket.html" class="btn-primary"><i class="fa-solid fa-plus"></i> Crear Nuevo</a>
+                    <a href="nuevo_ticket.html" class="btn-principal"><i class="fa-solid fa-plus"></i> Crear Nuevo</a>
                 </div>
 
                 <!-- Filtros -->
-                <div class="glass-panel" style="margin-bottom: 24px; padding: 16px 24px;">
+                <div class="panel-tarjeta" style="margin-bottom: 24px; padding: 16px 24px;">
                     <div style="display: flex; gap: 15px; align-items: center;">
                         <span style="font-weight: 500; color: var(--text-secondary);">Filtrar por:</span>
                         <select id="filterStatus" onchange="applyFilters()" class="custom-select"
@@ -89,7 +89,7 @@
                     </div>
                 </div>
 
-                <section class="glass-panel">
+                <section class="panel-tarjeta">
                     <div
                         style="padding: 24px 24px 10px 24px; margin-bottom: 5px; display: flex; gap: 10px; overflow-x: auto;">
                         <button class="btn-filter active" onclick="filterTicketsBy('Todos', this)">Todos los
@@ -100,7 +100,7 @@
                             Cerrados</button>
                     </div>
                     <div class="table-container" id="fullTicketsBody" data-full-view="true">
-                        <table class="tickets-table">
+                        <table class="tabla-datos">
                             <thead>
                                 <tr>
                                     <th>ID / Usuario</th>

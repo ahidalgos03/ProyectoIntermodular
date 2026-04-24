@@ -18,16 +18,16 @@
 
 <body>
 
-    <div class="dashboard-container">
+    <div class="contenedor-principal">
 
         <!-- Sidebar Navigation -->
-        <nav class="sidebar">
-            <div class="sidebar-header">
+        <nav class="menu-lateral">
+            <div class="cabecera-menu">
                 <i class="fa-solid fa-server logo-icon"></i>
                 <h2>Support<span>HUB</span></h2>
             </div>
 
-            <ul class="nav-links">
+            <ul class="enlaces-navegacion">
                 <li class="active"><a href="user.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
                 <li><a href="tickets.html"><i class="fa-solid fa-ticket"></i> Mis Tickets</a></li>
                 <li><a href="nuevo_ticket.html"><i class="fa-solid fa-plus-circle"></i> Nuevo Ticket</a></li>
@@ -40,21 +40,21 @@
         </nav>
 
         <!-- Main Content area -->
-        <main class="main-content">
+        <main class="area-principal">
 
             <!-- Topbar -->
-            <header class="topbar">
-                <div class="search-bar">
+            <header class="barra-superior">
+                <div class="barra-busqueda">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" placeholder="Buscar mis incidencias...">
                 </div>
 
-                <div class="user-profile">
-                    <button class="notif-btn">
+                <div class="user-dropdown">
+                    <button class="btn-notifications">
                         <i class="fa-regular fa-bell"></i>
                         <span class="badge">1</span>
                     </button>
-                    <div class="profile-info">
+                    <div class="user-details">
                         <span class="user-name" id="displayUsername">Usuario</span>
                         <span class="user-role">Usuario Support HUB</span>
                     </div>
@@ -64,34 +64,34 @@
             </header>
 
             <!-- Dashboard Content -->
-            <div class="content-wrapper">
+            <div class="contenido-pagina">
 
-                <div class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="page-heading" style="display: flex; justify-content: space-between; align-items: center;">
                     <div>
                         <h1 id="welcomeMessage">Hola, Usuario</h1>
                         <p>Aquí puedes consultar tus tickets y solicitar ayuda al equipo técnico</p>
                     </div>
-                    <a href="nuevo_ticket.html" class="btn-primary"><i class="fa-solid fa-plus"></i> Abrir
+                    <a href="nuevo_ticket.html" class="btn-principal"><i class="fa-solid fa-plus"></i> Abrir
                         Incidencia</a>
                 </div>
 
                 <!-- Stats Cards for User -->
-                <div class="stats-grid" style="grid-template-columns: 1fr 1fr;">
-                    <div class="stat-card">
-                        <div class="stat-icon open">
+                <div class="fila-metricas" style="grid-template-columns: 1fr 1fr;">
+                    <div class="tarjeta-metrica">
+                        <div class="icono-metrica open">
                             <i class="fa-solid fa-envelope-open-text"></i>
                         </div>
-                        <div class="stat-details">
+                        <div class="info-metrica">
                             <h3 id="stat-open">2</h3>
                             <p>Mis Tickets Abiertos</p>
                         </div>
                     </div>
 
-                    <div class="stat-card">
-                        <div class="stat-icon solved">
+                    <div class="tarjeta-metrica">
+                        <div class="icono-metrica solved">
                             <i class="fa-solid fa-check-double"></i>
                         </div>
-                        <div class="stat-details">
+                        <div class="info-metrica">
                             <h3 id="stat-solved">15</h3>
                             <p>Mis Tickets Resueltos</p>
                         </div>
@@ -100,14 +100,14 @@
 
                 <div class="main-grid" style="grid-template-columns: 1fr;">
                     <!-- Tabla de Mis Tickets Recientes -->
-                    <section class="glass-panel recent-tickets-section">
-                        <div class="panel-header">
+                    <section class="panel-tarjeta recent-tickets-section">
+                        <div class="cabecera-tarjeta">
                             <h2><i class="fa-solid fa-list-ul"></i> Mis Últimas Incidencias</h2>
-                            <button class="btn-icon"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                            <button class="btn-icon-only"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                         </div>
 
                         <div class="table-container" id="userTicketsBody" data-full-view="false">
-                            <table class="tickets-table">
+                            <table class="tabla-datos">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -121,7 +121,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="panel-footer">
+                        <div class="pie-tarjeta">
                             <a href="tickets.html" class="view-all">Ver todos mis tickets <i
                                     class="fa-solid fa-arrow-right"></i></a>
                         </div>

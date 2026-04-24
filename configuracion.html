@@ -109,15 +109,15 @@
 </head>
 
 <body>
-    <div class="dashboard-container">
+    <div class="contenedor-principal">
         <!-- Sidebar Navigation -->
-        <nav class="sidebar">
-            <div class="sidebar-header">
+        <nav class="menu-lateral">
+            <div class="cabecera-menu">
                 <i class="fa-solid fa-server logo-icon"></i>
                 <h2>Support<span>HUB</span></h2>
             </div>
 
-            <ul class="nav-links">
+            <ul class="enlaces-navegacion">
                 <li><a href="index.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
                 <li><a href="tickets.html"><i class="fa-solid fa-ticket"></i> Mis Tickets</a></li>
                 <li><a href="nuevo_ticket.html"><i class="fa-solid fa-plus-circle"></i> Nuevo Ticket</a></li>
@@ -131,19 +131,19 @@
             </ul>
         </nav>
 
-        <main class="main-content">
+        <main class="area-principal">
             <!-- Topbar -->
-            <header class="topbar">
-                <div class="search-bar">
+            <header class="barra-superior">
+                <div class="barra-busqueda">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" placeholder="Buscar incidencias, usuarios o equipos...">
                 </div>
-                <div class="user-profile">
-                    <button class="notif-btn">
+                <div class="user-dropdown">
+                    <button class="btn-notifications">
                         <i class="fa-regular fa-bell"></i>
                         <span class="badge">3</span>
                     </button>
-                    <div class="profile-info">
+                    <div class="user-details">
                         <span class="user-name">Arturo López</span>
                         <span class="user-role">Técnico Support HUB</span>
                     </div>
@@ -153,14 +153,14 @@
             </header>
 
             <!-- Page Content -->
-            <div class="content-wrapper">
-                <div class="page-header">
+            <div class="contenido-pagina">
+                <div class="page-heading">
                     <h1>Configuración del Sistema</h1>
                     <p>Gestiona tu cuenta, notificaciones y preferencias visuales</p>
                 </div>
 
                 <div class="settings-grid">
-                    <div class="glass-panel" style="padding: 16px;">
+                    <div class="panel-tarjeta" style="padding: 16px;">
                         <ul class="settings-nav">
                             <li class="active"><i class="fa-regular fa-user" style="width: 20px;"></i> Mi Perfil</li>
                             <li><i class="fa-regular fa-bell" style="width: 20px;"></i> Notificaciones</li>
@@ -170,7 +170,7 @@
                         </ul>
                     </div>
 
-                    <div class="glass-panel" style="padding: 32px;">
+                    <div class="panel-tarjeta" style="padding: 32px;">
                         <h2
                             style="font-size: 1.25rem; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color);">
                             Preferencias Generales</h2>
@@ -213,23 +213,23 @@
                             Datos Personales</h2>
 
                         <div class="row" style="margin-bottom: 16px;">
-                            <div class="form-group half">
+                            <div class="form-control-group half">
                                 <label>Nombre Completo</label>
                                 <input type="text" value="Arturo López">
                             </div>
-                            <div class="form-group half">
+                            <div class="form-control-group half">
                                 <label>Cargo / Rol</label>
                                 <input type="text" value="Técnico Administrador Support HUB" disabled
                                     style="opacity: 0.6;">
                             </div>
                         </div>
 
-                        <div class="form-group" style="margin-bottom: 24px;">
+                        <div class="form-control-group" style="margin-bottom: 24px;">
                             <label>Correo Electrónico (Login)</label>
                             <input type="email" value="arturo.sistemas@instituto.edu">
                         </div>
 
-                        <button class="btn-primary">Guardar Cambios</button>
+                        <button class="btn-principal">Guardar Cambios</button>
                     </div>
                 </div>
             </div>

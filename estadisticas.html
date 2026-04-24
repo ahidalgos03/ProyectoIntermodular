@@ -58,15 +58,15 @@
 </head>
 
 <body>
-    <div class="dashboard-container">
+    <div class="contenedor-principal">
         <!-- Sidebar Navigation -->
-        <nav class="sidebar">
-            <div class="sidebar-header">
+        <nav class="menu-lateral">
+            <div class="cabecera-menu">
                 <i class="fa-solid fa-server logo-icon"></i>
                 <h2>Support<span>HUB</span></h2>
             </div>
 
-            <ul class="nav-links">
+            <ul class="enlaces-navegacion">
                 <li><a href="index.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
                 <li><a href="tickets.html"><i class="fa-solid fa-ticket"></i> Mis Tickets</a></li>
                 <li><a href="nuevo_ticket.html"><i class="fa-solid fa-plus-circle"></i> Nuevo Ticket</a></li>
@@ -81,19 +81,19 @@
             </ul>
         </nav>
 
-        <main class="main-content">
+        <main class="area-principal">
             <!-- Topbar -->
-            <header class="topbar">
-                <div class="search-bar">
+            <header class="barra-superior">
+                <div class="barra-busqueda">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" placeholder="Buscar incidencias, usuarios o equipos...">
                 </div>
-                <div class="user-profile">
-                    <button class="notif-btn">
+                <div class="user-dropdown">
+                    <button class="btn-notifications">
                         <i class="fa-regular fa-bell"></i>
                         <span class="badge">3</span>
                     </button>
-                    <div class="profile-info">
+                    <div class="user-details">
                         <span class="user-name">Arturo López</span>
                         <span class="user-role">Técnico Support HUB</span>
                     </div>
@@ -103,25 +103,25 @@
             </header>
 
             <!-- Page Content -->
-            <div class="content-wrapper">
-                <div class="page-header">
+            <div class="contenido-pagina">
+                <div class="page-heading">
                     <h1>Métricas y Rendimiento IT</h1>
                     <p>Análisis del departamento técnico y SLA</p>
                 </div>
 
-                <div class="stats-grid">
-                    <div class="stat-card" style="flex-direction: column; align-items: flex-start; gap: 10px;">
+                <div class="fila-metricas">
+                    <div class="tarjeta-metrica" style="flex-direction: column; align-items: flex-start; gap: 10px;">
                         <h4 style="color: var(--text-secondary); font-weight: 500;">Tiempo Medio Resolución (MTTR)</h4>
                         <h2 style="font-size: 2.5rem; color: var(--primary);">2h 15m</h2>
                         <p style="color: #10b981; font-size: 0.85rem;"><i class="fa-solid fa-arrow-trend-down"></i> -15%
                             vs Mes Anterior</p>
                     </div>
-                    <div class="stat-card" style="flex-direction: column; align-items: flex-start; gap: 10px;">
+                    <div class="tarjeta-metrica" style="flex-direction: column; align-items: flex-start; gap: 10px;">
                         <h4 style="color: var(--text-secondary); font-weight: 500;">Cumplimiento SLA</h4>
                         <h2 style="font-size: 2.5rem; color: #10b981;">94.2%</h2>
                         <p style="color: var(--text-muted); font-size: 0.85rem;">Objetivo: 95.0%</p>
                     </div>
-                    <div class="stat-card" style="flex-direction: column; align-items: flex-start; gap: 10px;">
+                    <div class="tarjeta-metrica" style="flex-direction: column; align-items: flex-start; gap: 10px;">
                         <h4 style="color: var(--text-secondary); font-weight: 500;">Satisfacción Usuario</h4>
                         <h2 style="font-size: 2.5rem; color: #f59e0b;">4.8/5</h2>
                         <p style="color: #10b981; font-size: 0.85rem;"><i class="fa-solid fa-arrow-trend-up"></i> Basado
@@ -129,7 +129,7 @@
                     </div>
                 </div>
 
-                <div class="glass-panel" style="padding: 24px;">
+                <div class="panel-tarjeta" style="padding: 24px;">
                     <h2 style="font-size: 1.1rem; margin-bottom: 20px;">Tickets Resueltos por Semana (Mes Actual)</h2>
 
                     <!-- CSS Simulated Chart -->

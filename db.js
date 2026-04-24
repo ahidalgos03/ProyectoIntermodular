@@ -227,10 +227,10 @@ window.renderCrisisBanner = function() {
         </div>
         ${role === 'admin' ? '<button class="crisis-dismiss" onclick="toggleCrisisMode()">Desactivar Crisis</button>' : ''}
     `;
-    // Insert after topbar
-    const topbar = document.querySelector('.topbar');
-    if (topbar && topbar.parentNode) {
-        topbar.parentNode.insertBefore(banner, topbar.nextSibling);
+    // Insert after barra-superior
+    const barra-superior = document.querySelector('.barra-superior');
+    if (barra-superior && barra-superior.parentNode) {
+        barra-superior.parentNode.insertBefore(banner, barra-superior.nextSibling);
     }
 };
 
@@ -347,7 +347,7 @@ window.updateNotificationUI = function() {
     const notifs = getNotifications().filter(n => n.user === currentUser);
     const unreadCount = notifs.filter(n => !n.read).length;
     
-    const badges = document.querySelectorAll('.notif-btn .badge');
+    const badges = document.querySelectorAll('.btn-notifications .badge');
     badges.forEach(badge => {
         badge.textContent = unreadCount;
         badge.style.display = unreadCount > 0 ? 'flex' : 'none';
@@ -357,7 +357,7 @@ window.updateNotificationUI = function() {
 window.toggleNotifications = function(event) {
     if (event) event.stopPropagation();
     
-    let menu = document.getElementById('notif-dropdown');
+    let menu = document.getElementById('notifications-menu');
     if (menu) {
         menu.remove();
         return;
@@ -367,21 +367,21 @@ window.toggleNotifications = function(event) {
     const notifs = getNotifications().filter(n => n.user === currentUser).slice(0, 5); // show last 5
     
     menu = document.createElement('div');
-    menu.id = 'notif-dropdown';
-    menu.className = 'glass-panel notif-dropdown';
+    menu.id = 'notifications-menu';
+    menu.className = 'panel-tarjeta notifications-menu';
     
-    let content = '<div class="notif-header">Notificaciones</div><div class="notif-list">';
+    let content = '<div class="notifications-heading">Notificaciones</div><div class="notifications-wrapper">';
     
     if (notifs.length === 0) {
-        content += '<div class="notif-empty">No tienes notificaciones</div>';
+        content += '<div class="notifications-empty">No tienes notificaciones</div>';
     } else {
         notifs.forEach(n => {
             content += `
-                <div class="notif-item ${n.read ? '' : 'unread'}" onclick="handleNotifClick('${n.id}', '${n.ticketId}')">
-                    <div class="notif-icon"><i class="fa-solid fa-comment-dots"></i></div>
-                    <div class="notif-body">
+                <div class="notification-item ${n.read ? '' : 'unread'}" onclick="handleNotifClick('${n.id}', '${n.ticketId}')">
+                    <div class="notification-icon"><i class="fa-solid fa-comment-dots"></i></div>
+                    <div class="notification-content">
                         <p>${n.message}</p>
-                        <span class="notif-date">${n.date} • ${n.ticketId}</span>
+                        <span class="notification-time">${n.date} • ${n.ticketId}</span>
                     </div>
                 </div>
             `;
@@ -410,7 +410,7 @@ window.toggleNotifications = function(event) {
 window.handleNotifClick = function(notifId, ticketId) {
     markNotificationRead(notifId);
     showTicketDetails(ticketId);
-    document.getElementById('notif-dropdown')?.remove();
+    document.getElementById('notifications-menu')?.remove();
 };
 
 window.changeTicketState = function(id, newState) {
@@ -446,7 +446,7 @@ window.removeTicketWindow = function(id) {
     confirmOverlay.style.zIndex = '10000'; 
     
     confirmOverlay.innerHTML = `
-        <div class="ticket-modal glass-panel" style="text-align: center; max-width: 420px; padding: 40px 30px;">
+        <div class="ticket-modal panel-tarjeta" style="text-align: center; max-width: 420px; padding: 40px 30px;">
             <i class="fa-solid fa-triangle-exclamation" style="color: var(--danger-color); font-size: 3.5rem; margin-bottom: 20px;"></i>
             <h3 style="margin-bottom: 15px; font-size: 1.5rem;">¿Borrar Ticket Permanente?</h3>
             <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 1.05rem;">Esta acción eliminará el ticket de la base de datos y no se podrá revertir. ¿Deseas borrarlo?</p>
@@ -501,7 +501,7 @@ window.showTicketDetails = function(id) {
                 <option value="En Curso" ${ticket.state === 'En Curso' ? 'selected' : ''}>En Curso</option>
                 <option value="Resuelto" ${ticket.state === 'Resuelto' ? 'selected' : ''}>Resuelto</option>
             </select>
-            <button class="btn-primary" onclick="updateTicketWindow('${ticket.id}')" style="padding: 6px 12px; margin-left: 8px;">Cambiar Estado</button>
+            <button class="btn-principal" onclick="updateTicketWindow('${ticket.id}')" style="padding: 6px 12px; margin-left: 8px;">Cambiar Estado</button>
         `;
     }
 
@@ -518,12 +518,12 @@ window.showTicketDetails = function(id) {
     overlay.className = 'ticket-modal-overlay';
     
     overlay.innerHTML = `
-        <div class="ticket-modal glass-panel" style="display:flex; flex-direction:column; height: 90vh;">
-            <div class="panel-header" style="justify-content: space-between; flex-shrink: 0; padding-bottom: 20px;">
+        <div class="ticket-modal panel-tarjeta" style="display:flex; flex-direction:column; height: 90vh;">
+            <div class="cabecera-tarjeta" style="justify-content: space-between; flex-shrink: 0; padding-bottom: 20px;">
                 <h2><i class="fa-solid fa-ticket"></i> Detalle de Incidencia ${ticket.id}</h2>
                 <div style="display:flex; gap:10px; align-items:center;">
                     ${stateOptions}
-                    <button class="btn-icon" onclick="this.closest('.ticket-modal-overlay').remove()"><i class="fa-solid fa-xmark"></i></button>
+                    <button class="btn-icon-only" onclick="this.closest('.ticket-modal-overlay').remove()"><i class="fa-solid fa-xmark"></i></button>
                 </div>
             </div>
             
@@ -562,7 +562,7 @@ window.showTicketDetails = function(id) {
                 <div style="display:flex; gap:10px;">
                     <textarea id="newCommentText" placeholder="Escribe tu comentario aquí..." style="flex-grow:1; padding:10px; border-radius:6px; background:#1e293b; color:white; border:1px solid var(--border-color); resize:none; font-family: inherit;" rows="3"></textarea>
                     <div style="display:flex; flex-direction:column; gap:10px; justify-content:flex-start;">
-                        <button class="btn-primary" onclick="submitCommentWindow('${ticket.id}')" style="height:40px;"><i class="fa-solid fa-paper-plane"></i> Responder</button>
+                        <button class="btn-principal" onclick="submitCommentWindow('${ticket.id}')" style="height:40px;"><i class="fa-solid fa-paper-plane"></i> Responder</button>
                         ${deleteButton}
                     </div>
                 </div>
@@ -586,11 +586,11 @@ window.showNotification = function(message, callback = null) {
     overlay.className = 'ticket-modal-overlay';
     
     overlay.innerHTML = `
-        <div class="ticket-modal glass-panel" style="text-align: center; max-width: 400px; padding: 40px 30px;">
+        <div class="ticket-modal panel-tarjeta" style="text-align: center; max-width: 400px; padding: 40px 30px;">
             <i class="fa-solid fa-circle-check" style="color: #10B981; font-size: 3.5rem; margin-bottom: 20px;"></i>
             <h3 style="margin-bottom: 15px; font-size: 1.5rem;">¡Acción Exitosa!</h3>
             <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 1.05rem;">${message}</p>
-            <button class="btn-primary" id="notif-close-btn" style="width: 100%; justify-content: center; padding: 12px;">Aceptar</button>
+            <button class="btn-principal" id="notif-close-btn" style="width: 100%; justify-content: center; padding: 12px;">Aceptar</button>
         </div>
     `;
     
@@ -654,18 +654,18 @@ window.saveTicket = function(title, category, priority, description, affectedUse
 
 // HTML rendering utilities
 function getPriorityBadge(priority) {
-    if (priority === 'baja') return '<span class="priority-dot low"></span> Baja';
-    if (priority === 'media') return '<span class="priority-dot medium"></span> Media';
-    if (priority === 'alta') return '<span class="priority-dot high"></span> Alta';
-    if (priority === 'critica' || priority === 'crítica') return '<span class="priority-dot critical"></span> Crítica';
-    return '<span class="priority-dot low"></span> ' + priority;
+    if (priority === 'baja') return '<span class="dot-indicator low"></span> Baja';
+    if (priority === 'media') return '<span class="dot-indicator medium"></span> Media';
+    if (priority === 'alta') return '<span class="dot-indicator high"></span> Alta';
+    if (priority === 'critica' || priority === 'crítica') return '<span class="dot-indicator critical"></span> Crítica';
+    return '<span class="dot-indicator low"></span> ' + priority;
 }
 
 function getStateBadge(state) {
-    if (state === 'Abierto') return '<span class="status-badge open">Abierto</span>';
-    if (state === 'En Curso') return '<span class="status-badge progress">En Curso</span>';
-    if (state === 'Resuelto') return '<span class="status-badge solved">Resuelto</span>';
-    return '<span class="status-badge">' + state + '</span>';
+    if (state === 'Abierto') return '<span class="etiqueta-estado open">Abierto</span>';
+    if (state === 'En Curso') return '<span class="etiqueta-estado progress">En Curso</span>';
+    if (state === 'Resuelto') return '<span class="etiqueta-estado solved">Resuelto</span>';
+    return '<span class="etiqueta-estado">' + state + '</span>';
 }
 
 function renderTickets(containerId, isGlobal = false, limit = 0, stateFilter = 'todos', priorityFilter = 'todos') {
@@ -731,7 +731,7 @@ function renderTickets(containerId, isGlobal = false, limit = 0, stateFilter = '
                     <td>${getStateBadge(ticket.state)}</td>
                     <td>${getPriorityBadge(ticket.priority)}</td>
                     <td>${ticket.date}</td>
-                    <td><button class="btn-icon" onclick="showTicketDetails('${ticket.id}')"><i class="fa-solid fa-eye"></i></button></td>`;
+                    <td><button class="btn-icon-only" onclick="showTicketDetails('${ticket.id}')"><i class="fa-solid fa-eye"></i></button></td>`;
         }
 
         tr.innerHTML = html;
@@ -788,14 +788,14 @@ initDB();
 // Init Search System
 function initGlobalSearch() {
     document.addEventListener('DOMContentLoaded', () => {
-        const searchInput = document.querySelector('.search-bar input');
+        const searchInput = document.querySelector('.barra-busqueda input');
         
         if (searchInput) {
             searchInput.addEventListener('input', (e) => {
                 const query = e.target.value.toLowerCase().trim();
                 
                 // Search in Table Rows
-                const tableRows = document.querySelectorAll('.tickets-table tbody tr');
+                const tableRows = document.querySelectorAll('.tabla-datos tbody tr');
                 tableRows.forEach(row => {
                     const text = row.textContent.toLowerCase();
                     row.style.display = text.includes(query) ? '' : 'none';

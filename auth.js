@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // Actualizar nombre de usuario y rol en el topbar
+    // Actualizar nombre de usuario y rol en el barra-superior
     document.querySelectorAll('.user-name').forEach(el => el.textContent = role === 'admin' ? 'Admin' : username);
     document.querySelectorAll('.user-role').forEach(el => el.textContent = role === 'admin' ? 'Administrador' : 'Usuario Estándar');
     document.querySelectorAll('.avatar').forEach(el => {
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     } else if (isAdmin) {
-        // Renombrar "Mis Tickets" a "Todos los Tickets" en el sidebar
+        // Renombrar "Mis Tickets" a "Todos los Tickets" en el menu-lateral
         document.querySelectorAll('a[href="tickets.html"]').forEach(link => {
             if (link.innerHTML.includes('Mis Tickets')) {
                 link.innerHTML = '<i class="fa-solid fa-ticket"></i> Todos los Tickets';
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const pageTitle = document.querySelector('h1');
         if (pageTitle && pageTitle.textContent === 'Tus Tickets de Incidencia') {
             pageTitle.textContent = 'Gestión Global de Tickets';
-            const pageDesc = document.querySelector('.page-header p');
+            const pageDesc = document.querySelector('.page-heading p');
             if (pageDesc) pageDesc.textContent = 'Vista general y gestión de todas las incidencias creadas por los usuarios.';
         }
 
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Ocultar botones de "Crear Nuevo", "Abrir Incidencia", etc.
-        const creationButtons = document.querySelectorAll('.btn-primary, .btn-secondary, a.btn-primary');
+        const creationButtons = document.querySelectorAll('.btn-principal, .btn-secundario, a.btn-principal');
         creationButtons.forEach(btn => {
             const text = btn.textContent.toLowerCase();
             if (text.includes('crear nuevo') || text.includes('abrir incidencia') || text.includes('enviar ticket')) {
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateNotificationUI();
     }
 
-    const notifBtns = document.querySelectorAll('.notif-btn');
+    const notifBtns = document.querySelectorAll('.btn-notifications');
     notifBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             if (typeof toggleNotifications === 'function') {

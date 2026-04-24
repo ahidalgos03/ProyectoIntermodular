@@ -14,15 +14,15 @@
 </head>
 
 <body>
-    <div class="dashboard-container">
+    <div class="contenedor-principal">
         <!-- Sidebar Navigation -->
-        <nav class="sidebar">
-            <div class="sidebar-header">
+        <nav class="menu-lateral">
+            <div class="cabecera-menu">
                 <i class="fa-solid fa-server logo-icon"></i>
                 <h2>Support<span>HUB</span></h2>
             </div>
 
-            <ul class="nav-links">
+            <ul class="enlaces-navegacion">
                 <li><a href="index.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
                 <li><a href="tickets.html"><i class="fa-solid fa-ticket"></i> Mis Tickets</a></li>
                 <li class="active"><a href="nuevo_ticket.html"><i class="fa-solid fa-plus-circle"></i> Nuevo Ticket</a>
@@ -37,19 +37,19 @@
             </ul>
         </nav>
 
-        <main class="main-content">
+        <main class="area-principal">
             <!-- Topbar -->
-            <header class="topbar">
-                <div class="search-bar">
+            <header class="barra-superior">
+                <div class="barra-busqueda">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" placeholder="Buscar incidencias, usuarios o equipos...">
                 </div>
-                <div class="user-profile">
-                    <button class="notif-btn">
+                <div class="user-dropdown">
+                    <button class="btn-notifications">
                         <i class="fa-regular fa-bell"></i>
                         <span class="badge">3</span>
                     </button>
-                    <div class="profile-info">
+                    <div class="user-details">
                         <span class="user-name">Arturo López</span>
                         <span class="user-role">Técnico Support HUB</span>
                     </div>
@@ -59,20 +59,20 @@
             </header>
 
             <!-- Page Content -->
-            <div class="content-wrapper">
-                <div class="page-header">
+            <div class="contenido-pagina">
+                <div class="page-heading">
                     <h1>Apertura de Incidencia</h1>
                     <p>Proporciona los detalles del problema para una rápida resolución</p>
                 </div>
 
                 <div style="max-width: 800px; margin: 0 auto;">
-                    <section class="glass-panel ticket-form-section">
-                        <div class="panel-header">
+                    <section class="panel-tarjeta formulario-estandar-section">
+                        <div class="cabecera-tarjeta">
                             <h2><i class="fa-solid fa-pen-nib"></i> Formulario de Soporte Técnico</h2>
                         </div>
 
-                        <form id="newTicketForm" class="ticket-form">
-                            <div class="form-group">
+                        <form id="newTicketForm" class="formulario-estandar">
+                            <div class="form-control-group">
                                 <label for="asunto">Asunto Breve del Problema</label>
                                 <input type="text" id="asunto" placeholder="Ej: Fallo en conexión de red (VLAN 10)"
                                     required autocomplete="off">
@@ -97,7 +97,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="form-group half">
+                                <div class="form-control-group half">
                                     <label for="categoria">Categoría</label>
                                     <select id="categoria" required>
                                         <option value="" disabled selected>Seleccionar categoría...</option>
@@ -109,7 +109,7 @@
                                     </select>
                                 </div>
 
-                                <div class="form-group half">
+                                <div class="form-control-group half">
                                     <label for="prioridad">Prioridad (Nivel SLA)</label>
                                     <select id="prioridad" required>
                                         <option value="baja">Baja (No afecta al trabajo)</option>
@@ -120,13 +120,13 @@
                                 </div>
                             </div>
 
-                             <div class="form-group">
+                             <div class="form-control-group">
                                  <label for="usuario_afectado">Usuario / PC Afectado (Opcional)</label>
                                  <input type="text" id="usuario_afectado" placeholder="Ej: Equipo PC-05">
                              </div>
 
                             <div class="row">
-                                <div class="form-group">
+                                <div class="form-control-group">
                                     <label for="departamento">Departamento</label>
                                     <div style="display:flex; gap:10px;">
                                         <select id="departamento" style="flex:1;">
@@ -141,7 +141,7 @@
                                             style="display:none; flex:1;">
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-control-group">
                                     <label for="contacto">Especifique Mesa / Tlf. / Aula</label>
                                     <input type="text" id="contacto" placeholder="Ej: Mesa 12 o Ext. 405">
                                 </div>
@@ -149,13 +149,13 @@
 
 
 
-                            <div class="form-group">
+                            <div class="form-control-group">
                                 <label for="descripcion">Descripción Detallada</label>
                                 <textarea id="descripcion"
                                     placeholder="Describe el problema con el mayor detalle posible..."></textarea>
                             </div>
 
-                            <div class="form-group" style="margin-top: 15px;">
+                            <div class="form-control-group" style="margin-top: 15px;">
                                 <label for="adjunto"><i class="fa-solid fa-paperclip"></i> Adjuntar Captura o Imagen de
                                     Error (Max 3MB)</label>
                                 <input type="file" id="adjunto" accept="image/*"
@@ -176,10 +176,10 @@
                                 </button>
                             </div>
 
-                            <div class="form-actions"
+                            <div class="action-buttons"
                                 style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-color);">
-                                <button type="reset" class="btn-secondary">Limpiar Formulario</button>
-                                <button type="submit" class="btn-primary"
+                                <button type="reset" class="btn-secundario">Limpiar Formulario</button>
+                                <button type="submit" class="btn-principal"
                                     style="padding: 12px 24px; font-size: 1rem;"><i class="fa-solid fa-paper-plane"></i>
                                     Generar Ticket Oficial</button>
                             </div>
@@ -277,7 +277,7 @@
             overlay.className = 'ticket-modal-overlay';
             overlay.style.zIndex = '10000';
             overlay.innerHTML = `
-                <div class="ticket-modal glass-panel" style="max-width:480px; text-align:center; padding:40px 30px;">
+                <div class="ticket-modal panel-tarjeta" style="max-width:480px; text-align:center; padding:40px 30px;">
                     <div style="font-size:3.5rem; margin-bottom:15px;">🚨</div>
                     <h3 style="color:#ef4444; margin-bottom:12px; font-size:1.5rem;">Activar Modo Crisis Global</h3>
                     <p style="color:var(--text-secondary); margin-bottom:20px;">Todos los usuarios verán una alerta roja en toda la plataforma. Describe brevemente la incidencia:</p>
@@ -285,7 +285,7 @@
                         style="width:100%; padding:12px; border-radius:8px; border:1px solid rgba(239,68,68,0.4); background:rgba(239,68,68,0.05); color:white; font-family:inherit; resize:none; margin-bottom:20px;"
                         rows="3"></textarea>
                     <div style="display:flex; gap:12px; justify-content:center;">
-                        <button class="btn-secondary" onclick="this.closest('.ticket-modal-overlay').remove()">Cancelar</button>
+                        <button class="btn-secundario" onclick="this.closest('.ticket-modal-overlay').remove()">Cancelar</button>
                         <button style="background:#ef4444; color:white; border:none; padding:10px 24px; border-radius:6px; font-weight:600; font-family:inherit; cursor:pointer;" onclick="confirmCrisis(this)">
                             <i class="fa-solid fa-triangle-exclamation"></i> Activar Alerta
                         </button>

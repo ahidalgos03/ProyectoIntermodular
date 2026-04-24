@@ -18,16 +18,16 @@
 
 <body>
 
-    <div class="dashboard-container">
+    <div class="contenedor-principal">
 
         <!-- Sidebar Navigation -->
-        <nav class="sidebar">
-            <div class="sidebar-header">
+        <nav class="menu-lateral">
+            <div class="cabecera-menu">
                 <i class="fa-solid fa-server logo-icon"></i>
                 <h2>Support<span>HUB</span></h2>
             </div>
 
-            <ul class="nav-links">
+            <ul class="enlaces-navegacion">
                 <li class="active"><a href="admin.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
                 <li><a href="tickets.html"><i class="fa-solid fa-ticket"></i> Todos los Tickets</a></li>
                 <li><a href="base_conocimiento.html"><i class="fa-solid fa-folder-open"></i> Base de Conocimiento</a>
@@ -41,21 +41,21 @@
         </nav>
 
         <!-- Main Content area -->
-        <main class="main-content">
+        <main class="area-principal">
 
             <!-- Topbar -->
-            <header class="topbar">
-                <div class="search-bar">
+            <header class="barra-superior">
+                <div class="barra-busqueda">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" placeholder="Buscar incidencias, usuarios o equipos...">
                 </div>
 
-                <div class="user-profile">
-                    <button class="notif-btn">
+                <div class="user-dropdown">
+                    <button class="btn-notifications">
                         <i class="fa-regular fa-bell"></i>
                         <span class="badge">3</span>
                     </button>
-                    <div class="profile-info">
+                    <div class="user-details">
                         <span class="user-name" id="displayUsername">Admin</span>
                         <span class="user-role">Administrador del Sistema</span>
                     </div>
@@ -65,40 +65,40 @@
             </header>
 
             <!-- Dashboard Content -->
-            <div class="content-wrapper">
+            <div class="contenido-pagina">
 
-                <div class="page-header">
+                <div class="page-heading">
                     <h1>Centro de Soporte Técnico (Admin)</h1>
                     <p>Gestión global de incidencias y peticiones de servicio</p>
                 </div>
 
                 <!-- Stats Cards -->
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon open">
+                <div class="fila-metricas">
+                    <div class="tarjeta-metrica">
+                        <div class="icono-metrica open">
                             <i class="fa-solid fa-envelope-open-text"></i>
                         </div>
-                        <div class="stat-details">
+                        <div class="info-metrica">
                             <h3 id="stat-open">14</h3>
                             <p>Tickets Abiertos Totales</p>
                         </div>
                     </div>
 
-                    <div class="stat-card">
-                        <div class="stat-icon progress">
+                    <div class="tarjeta-metrica">
+                        <div class="icono-metrica progress">
                             <i class="fa-solid fa-spinner"></i>
                         </div>
-                        <div class="stat-details">
+                        <div class="info-metrica">
                             <h3 id="stat-progress">8</h3>
                             <p>En Progreso</p>
                         </div>
                     </div>
 
-                    <div class="stat-card">
-                        <div class="stat-icon solved">
+                    <div class="tarjeta-metrica">
+                        <div class="icono-metrica solved">
                             <i class="fa-solid fa-check-double"></i>
                         </div>
-                        <div class="stat-details">
+                        <div class="info-metrica">
                             <h3 id="stat-solved">124</h3>
                             <p>Resueltos (Mes)</p>
                         </div>
@@ -107,7 +107,7 @@
 
                 <!-- Crisis Panic Button (Admin) -->
                 <div id="crisis-panic-section" style="display:none; margin-bottom: 32px;">
-                    <section class="glass-panel" style="padding: 24px;">
+                    <section class="panel-tarjeta" style="padding: 24px;">
                         <button type="button" id="crisis-panic-btn" class="crisis-panic-btn"
                             onclick="showCrisisConfirm()">
                             <span class="crisis-panic-icon">🚨</span>
@@ -126,14 +126,14 @@
 
 
                     <!-- Tabla de Tickets Recientes -->
-                    <section class="glass-panel recent-tickets-section">
-                        <div class="panel-header">
+                    <section class="panel-tarjeta recent-tickets-section">
+                        <div class="cabecera-tarjeta">
                             <h2><i class="fa-solid fa-list-ul"></i> Actividad Reciente Global</h2>
-                            <button class="btn-icon"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                            <button class="btn-icon-only"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                         </div>
 
                         <div class="table-container" id="adminTicketsBody" data-full-view="false">
-                            <table class="tickets-table">
+                            <table class="tabla-datos">
                                 <thead>
                                     <tr>
                                         <th>Usuario</th>
@@ -147,7 +147,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="panel-footer">
+                        <div class="pie-tarjeta">
                             <a href="tickets.html" class="view-all">Ver todos los tickets <i
                                     class="fa-solid fa-arrow-right"></i></a>
                         </div>
@@ -191,7 +191,7 @@
             overlay.className = 'ticket-modal-overlay';
             overlay.style.zIndex = '10000';
             overlay.innerHTML = `
-                <div class="ticket-modal glass-panel" style="max-width:480px; text-align:center; padding:40px 30px;">
+                <div class="ticket-modal panel-tarjeta" style="max-width:480px; text-align:center; padding:40px 30px;">
                     <div style="font-size:3.5rem; margin-bottom:15px;">🚨</div>
                     <h3 style="color:#ef4444; margin-bottom:12px; font-size:1.5rem;">Activar Modo Crisis Global</h3>
                     <p style="color:var(--text-secondary); margin-bottom:20px;">Describe brevemente la anomalía detectada. Esto aparecerá en el banner de todos los usuarios:</p>
@@ -199,7 +199,7 @@
                         style="width:100%; padding:12px; border-radius:8px; border:1px solid rgba(239,68,68,0.4); background:rgba(239,68,68,0.05); color:white; font-family:inherit; resize:none; margin-bottom:20px;"
                         rows="3"></textarea>
                     <div style="display:flex; gap:12px; justify-content:center;">
-                        <button class="btn-secondary" onclick="this.closest('.ticket-modal-overlay').remove()">Cancelar</button>
+                        <button class="btn-secundario" onclick="this.closest('.ticket-modal-overlay').remove()">Cancelar</button>
                         <button style="background:#ef4444; color:white; border:none; padding:10px 24px; border-radius:6px; font-weight:600; font-family:inherit; cursor:pointer;" onclick="confirmCrisis(this)">
                             <i class="fa-solid fa-triangle-exclamation"></i> Lanzar Alerta
                         </button>

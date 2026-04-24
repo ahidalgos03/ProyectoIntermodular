@@ -90,15 +90,15 @@
 </head>
 
 <body>
-    <div class="dashboard-container">
+    <div class="contenedor-principal">
         <!-- Sidebar Navigation -->
-        <nav class="sidebar">
-            <div class="sidebar-header">
+        <nav class="menu-lateral">
+            <div class="cabecera-menu">
                 <i class="fa-solid fa-server logo-icon"></i>
                 <h2>Support<span>HUB</span></h2>
             </div>
 
-            <ul class="nav-links">
+            <ul class="enlaces-navegacion">
                 <li><a href="index.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
                 <li><a href="tickets.html"><i class="fa-solid fa-ticket"></i> Mis Tickets</a></li>
                 <li><a href="nuevo_ticket.html"><i class="fa-solid fa-plus-circle"></i> Nuevo Ticket</a></li>
@@ -112,19 +112,19 @@
             </ul>
         </nav>
 
-        <main class="main-content">
+        <main class="area-principal">
             <!-- Topbar -->
-            <header class="topbar">
-                <div class="search-bar">
+            <header class="barra-superior">
+                <div class="barra-busqueda">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" placeholder="Buscar incidencias, usuarios o equipos...">
                 </div>
-                <div class="user-profile">
-                    <button class="notif-btn">
+                <div class="user-dropdown">
+                    <button class="btn-notifications">
                         <i class="fa-regular fa-bell"></i>
                         <span class="badge">3</span>
                     </button>
-                    <div class="profile-info">
+                    <div class="user-details">
                         <span class="user-name">Arturo López</span>
                         <span class="user-role">Técnico Support HUB</span>
                     </div>
@@ -134,8 +134,8 @@
             </header>
 
             <!-- Page Content -->
-            <div class="content-wrapper">
-                <div class="page-header" style="text-align: center; margin-bottom: 40px;">
+            <div class="contenido-pagina">
+                <div class="page-heading" style="text-align: center; margin-bottom: 40px;">
                     <h1 style="font-size: 2.5rem; margin-bottom: 10px;">¿Cómo podemos ayudarte hoy?</h1>
                     <p style="font-size: 1.1rem;">Encuentra manuales, guías y soluciones frecuentes para problemas IT
                     </p>
@@ -249,10 +249,10 @@
                         overlay.style.zIndex = '9999';
 
                         overlay.innerHTML = `
-                        <div class="ticket-modal glass-panel" style="max-width: 700px; width: 90%; max-height: 85vh; display: flex; flex-direction: column;">
-                            <div class="panel-header" style="justify-content: space-between; flex-shrink: 0;">
+                        <div class="ticket-modal panel-tarjeta" style="max-width: 700px; width: 90%; max-height: 85vh; display: flex; flex-direction: column;">
+                            <div class="cabecera-tarjeta" style="justify-content: space-between; flex-shrink: 0;">
                                 <h2><i class="${categoryIcon}" style="margin-right: 10px;"></i> Soluciones: ${categoryName}</h2>
-                                <button class="btn-icon" id="close-kb-modal"><i class="fa-solid fa-xmark"></i></button>
+                                <button class="btn-icon-only" id="close-kb-modal"><i class="fa-solid fa-xmark"></i></button>
                             </div>
                             <div style="padding: 24px; overflow-y: auto;">
                                 <ul class="kb-articles-list" style="margin-top:0; border-top:none; padding-top:0;">
